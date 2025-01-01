@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+class Solution {
+    public boolean checkOverlap(int radius, int xCenter, int yCenter, int x1, int y1, int x2, int y2) {
+        int closestX = Math.max(x1, Math.min(xCenter, x2));
+        int closestY = Math.max(y1, Math.min(yCenter, y2));
+        int distanceSquared = (closestX - xCenter) * (closestX - xCenter) + (closestY - yCenter) * (closestY - yCenter);
+        return distanceSquared <= radius * radius;
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Solution solution = new Solution();
+        System.out.print("Enter the radius of the circle: ");
+        int radius = scanner.nextInt();
+        System.out.print("Enter the x-coordinate of the circle's center: ");
+        int xCenter = scanner.nextInt();
+        System.out.print("Enter the y-coordinate of the circle's center: ");
+        int yCenter = scanner.nextInt();
+        System.out.print("Enter the x-coordinate of the bottom-left corner of the rectangle: ");
+        int x1 = scanner.nextInt();
+        System.out.print("Enter the y-coordinate of the bottom-left corner of the rectangle: ");
+        int y1 = scanner.nextInt();
+        System.out.print("Enter the x-coordinate of the top-right corner of the rectangle: ");
+        int x2 = scanner.nextInt();
+        System.out.print("Enter the y-coordinate of the top-right corner of the rectangle: ");
+        int y2 = scanner.nextInt();
+        boolean overlap = solution.checkOverlap(radius, xCenter, yCenter, x1, y1, x2, y2);
+        System.out.println("Does the circle overlap with the rectangle? " + overlap);
+        scanner.close();
+    }
+}
